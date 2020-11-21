@@ -1,6 +1,6 @@
 const express = require('express');
 const  app = express();
-const port = process.env.port || 4000;
+const port = process.env.PORT || 4000;
 const path = require('path');
 const hbs = require('hbs');
 const staticPath = path.join(__dirname,'../publicdir');
