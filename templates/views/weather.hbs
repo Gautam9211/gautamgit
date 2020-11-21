@@ -1,0 +1,99 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>weather</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web app</title>
+     <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Piazzolla:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel ='stylesheet' href= 'css/style.css'>
+    <!-- Latest compiled and minified CSS -->   
+</head>
+<body>
+      
+    <div class = 'container-fluid main_menu'>
+        <div class="row">
+            <div class="col-md-10 col-12 mx-auto">
+                {{>nav}}
+            </div>
+        </div>
+    </div>
+   
+      <div class = 'container-fluid main_menu bg-white mt-5'>
+        <div class="row">
+            <div class="col-md-10 col-12 mx-auto ">
+                <div class = "mainContent">
+                    <form class="tempForm">
+                        <input  type= "text" id="city" placeholder="Enter Your city name" autocomplete="off">
+                         <input type='submit' value="search" id="submitbtn">
+                    </form>
+                </div>
+                <div class = "TempInfo">
+                    <div class = "topLayer">
+                        <p id="clockbox">Tues</p>
+                        <p id="date">13 OCT</p>
+                    </div>
+                    <div class = "mainLayer ">
+                        <p id="cityName" class="mx-auto">Get output</p>
+                         <div class="middleLayer " >
+                             <p ><span id="temp">32</span><sup>o</sup>C</p>
+                             <p id="tempStatus" ><i class="fa fa-cloud"  aria-hidden="true"></i></p>
+                         </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+       
+  {{>footer}}
+
+
+      <script type="text/javascript">
+        var tday= ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        var tmonth=["January","February","March","April","May","June","July","August","September","October","November","December"];
+        
+        function GetClock(){
+        var d=new Date();
+        var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getFullYear();
+        var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds(),ap;
+        
+        if(nhour==0){ap=" AM";nhour=12;}
+        else if(nhour<12){ap=" AM";}
+        else if(nhour==12){ap=" PM";}
+        else if(nhour>12){ap=" PM";nhour-=12;}
+        
+        if(nmin<=9) nmin="0"+nmin;
+        if(nsec<=9) nsec="0"+nsec;
+
+        const  clocktext=""+tday[nday];
+        document.getElementById('clockbox').innerHTML=clocktext;
+        const dateMonth = ""+ndate + " " +tmonth[nmonth];
+        document.getElementById('date').innerHTML=dateMonth;
+
+        }
+        
+        GetClock();
+        setInterval(GetClock,1000);
+        </script>
+
+ 
+</script>
+
+  <script type="text/javascript" src= "js/main.js">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
