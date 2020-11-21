@@ -11,7 +11,7 @@ app.set('views',viewPath);
 app.use(express.static(staticPath));
 hbs.registerPartials(partialPath);
 
-app.get('/index',(req,res)=> {
+app.get('/',(req,res)=> {
     res.render('index');
 });
 
